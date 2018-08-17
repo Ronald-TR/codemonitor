@@ -25,7 +25,22 @@
           CODEMED Services
           <div slot="subtitle"></div>
         </q-toolbar-title>
+         
+          
+         
+          <q-chip 
+              flat
+              class="cursor-pointer" 
+              @click.native="$router.push('/usuario')"
+              avatar="/statics/avatar.jpg" 
+              color="primary"           
+            >
+              {{ getUserInfo().display_name }}
+            </q-chip>
+         
+ 
       </q-toolbar>
+
     </q-layout-header>
 
     <q-layout-drawer
@@ -40,7 +55,18 @@
         inset-delimiter   
         
       >
-        <q-list-header v-ripple>Painel de Gerenciamento</q-list-header>
+        <q-list-header v-ripple>
+          <q-chip 
+             
+            color="primary"
+          
+          >
+
+          Painel de Gerenciamento
+          </q-chip>
+
+
+        </q-list-header>
         <q-item @click.native="$router.push('/cadastro')">
           <q-item-side icon="school" />
           <q-item-main label="Cadastre" sublabel="Clientes e seus Serviços" />
@@ -77,17 +103,23 @@ export default {
   data () {
     return {
       leftDrawerOpen: this.$q.platform.is.desktop,
-      scrollY: 0
+      scrollY: 0,
+      usuario: null
     }
   },
   methods: {
-    openURL
+    openURL,
+    getUserInfo() {
+      const userinfo = this.$store.state.auth.userinfo
+      return !(userinfo == null) ? userinfo : {display_name: 'Not logged'}
+    }
+
   },
   mounted () {
     window.addEventListener('scroll', () => {
       this.scrollY = window.scrollY
-    })
-  }
+    });
+  },  
 }
 </script>
 
