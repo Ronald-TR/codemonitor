@@ -46,7 +46,6 @@ export function GET_USER_INFO ({commit, dispatch}) {
     return new Promise((resolve, reject)=>{
         Axios({url: baseUrl+'users', headers: {'Authorization': localStorage.getItem('user-token')}, method: 'GET'})
         .then(resp => {
-            console.log(resp)
             commit('SET_USER_INFO', resp.data)
             resolve(resp)
             }).catch(err => {
