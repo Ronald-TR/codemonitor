@@ -1,10 +1,14 @@
 <template>
   <q-page padding class="text-center">
     <div class="form-container bg-grey-1">
-      <div class="form-bar bg-dark text-white">
-        <h5 class="">Clientes</h5>
-        <a>Selecione-o e monitore seus serviços.</a>
+      <div class=" form-bar bg-dark text-white">
+        <a class="text-weight-thin text-weight-light">Clientes</a>
+        <!-- <p class="text-weight-light">
+        </p> -->
       </div>
+        <span class="">
+           Selecione-o e monitore seus serviços.
+          </span>
 
       <q-tabs class="form-bar">
         <q-tab 
@@ -164,6 +168,8 @@ export default {
 .form-bar{
   border-top-left-radius: inherit;
   border-top-right-radius: inherit; 
+  font-size: 1.5em;
+  /* margin-bottom: -30px; */
 }
 
 .form-text {
