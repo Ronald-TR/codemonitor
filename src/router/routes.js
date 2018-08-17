@@ -1,16 +1,21 @@
-import store from '../store/auth'
+import store from '../store'
+
 
 const ifNotAuthenticated = (to, from, next) => {
 
-  const isAuth = !(store.state.userinfo === null)
+  const isAuth = !(store().state.auth.userinfo === null)
   if (isAuth === true) {
-    console.log(store.state.userinfo)
-    console.log('entrando na rota de cliente')
     next()
     return
   }
-  console.log(store.state.userinfo)
   next('*')
+}
+
+const onBeforeLogin = (to, from, next) => {
+  // faço o pre loading das informações do usuario
+  store().dispatch('auth/GET_USER_INFO').then(resp => { }).catch(err =>{  })
+  
+  next()  
 }
 
 const routes = [
@@ -20,8 +25,10 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Index.vue') },
       { path: '/cliente', component: () => import('pages/Clients.vue'), beforeEnter: ifNotAuthenticated },
-      { path: '/cadastro', component: () => import('pages/Cadaster.vue'), beforeEnter: ifNotAuthenticated }
-    ]
+      { path: '/cadastro', component: () => import('pages/Cadaster.vue'), beforeEnter: ifNotAuthenticated },
+      { path: '/usuario', component: () => import('pages/user.vue'), beforeEnter: ifNotAuthenticated },
+    ],
+    beforeEnter: onBeforeLogin
   }
 ]
 
