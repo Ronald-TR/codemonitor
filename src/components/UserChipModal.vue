@@ -34,17 +34,21 @@ export default {
   // name: 'ComponentName',
   data () {
     return {
-      userinfo: null,
       opened: false
     }
   },
   methods: {
     getUserChipName () {
-      return !this.userinfo == null ? this.userinfo.display_name : 'Not Logged' 
+      return !(this.userinfo == null) ? this.userinfo.display_name : 'Not Logged' 
+    }
+  },
+  computed: {
+    userinfo () {
+      return this.$store.state.auth.userinfo
     }
   },
   mounted () {
-    this.userinfo = this.$store.state.auth.userinfo
+    console.log('a', this.userinfo)
   }
 }
 </script>
