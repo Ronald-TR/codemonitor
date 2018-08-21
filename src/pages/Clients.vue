@@ -23,10 +23,6 @@
            />
         
         <q-tab-pane v-if="currentClient != null" :name="String(currentClient.id)">
-          <div >
-            
-            
-          </div>
           <q-btn
             @click="getServices(currentClient.watchlink+'watch/all')"
             :label="'load \'' + currentClient.name + '\' services'"
@@ -53,9 +49,7 @@
                 icon="donut_large"
                 color="white"
                 class="text-black"
-                :disable="isAjaxClicked || s.status === 'Running' ? true : false"
-                
-              
+                :disable="isAjaxClicked || s.status === 'Running' ? true : false"             
               />
               <!-- botao de stop -->
               <q-btn
@@ -68,22 +62,9 @@
               </q-item-main> 
               </q-item>      
           </q-list>
-
         </q-tab-pane>
-
-
       </q-tabs>
-
-      </div>
-    </div>
-
-    
-    
-    
-
-
-
-    
+    </div>   
   </q-page>
 </template>
 
