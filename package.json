@@ -18,7 +18,8 @@
     "dotenv": "^6.0.0",
     "dotenv-webpack": "^1.5.7",
     "express": "^4.16.3",
-    "serve-static": "^1.13.2"
+    "serve-static": "^1.13.2",
+    "vue-cli": "^2.9.6"
   },
   "devDependencies": {
     "quasar-cli": "^0.17.0",
