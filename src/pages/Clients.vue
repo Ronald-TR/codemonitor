@@ -1,22 +1,25 @@
 <template>
   <q-page padding class="text-center">
     <div class="form-container bg-grey-1">
-      <div class=" form-bar bg-dark text-white">
+      <div class="form-bar bg-dark text-white">
         <a class="text-weight-thin text-weight-light">Clientes</a>
         <!-- <p class="text-weight-light">
         </p> -->
       </div>
-        <span class="">
-           Selecione-o e monitore seus serviços.
-          </span>
+      <div class="form-text" style="box-sizing: border-box">
 
-      <q-tabs class="form-bar">
+      <p class="">
+        Clique com o botão direito (ou segure, se em mobile) para exibir as opções do cliente
+      </p>
+      </div>
+
+      <q-tabs class="form-text">
         <q-tab 
           v-for="(c, index) in this.clientes" 
           :label="c.name" 
           :name="String(c.id)" 
           slot="title"
-          @click="currentClient = clientes[index]"
+          @click="currentClient = clientes[index]; services = null"
            />
         
         <q-tab-pane v-if="currentClient != null" :name="String(currentClient.id)">
@@ -158,22 +161,29 @@ export default {
 }
 .form-container {
   border-radius: 5px; 
+  /* display: flex; */
+  /* flex-wrap: wrap;
+  flex-direction: row; */
+
 }
 
 .form-container > :not(.form-bar){
   padding-left: 20px;
   padding-right: 20px;
+
+  box-sizing: border-box;
 }
 
 .form-bar{
+  /* box-sizing: border-box; */
   border-top-left-radius: inherit;
   border-top-right-radius: inherit; 
   font-size: 1.5em;
-  /* margin-bottom: -30px; */
+
 }
 
 .form-text {
-  /* text-align: left; */
+  text-align: center;
 }
 
 </style>
