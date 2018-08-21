@@ -3,7 +3,7 @@
     <q-modal content-css="padding: 50px" v-model="opened">
       <div class="container">
         <p class="q-title">Dados do Usuário</p>
-        <ul class="">
+        <ul v-if="!(this.userinfo == null)">
           <li><strong>Nome de exibição:</strong> {{ this.userinfo.display_name }}</li>
           <li><strong>Usuario: </strong>{{ this.userinfo.username }}</li>
           <li><strong>Data de Cadastro: </strong> {{ this.userinfo.join_date }} </li>
@@ -24,7 +24,7 @@
       avatar="/statics/avatar.jpg" 
       color="primary"           
     >
-      {{ this.userinfo.display_name }}
+      {{ this.getUserChipName() }}
     </q-chip>
   </div>
 </template>
@@ -39,7 +39,9 @@ export default {
     }
   },
   methods: {
-
+    getUserChipName () {
+      return !this.userinfo == null ? this.userinfo.display_name : 'Not Logged' 
+    }
   },
   mounted () {
     this.userinfo = this.$store.state.auth.userinfo
