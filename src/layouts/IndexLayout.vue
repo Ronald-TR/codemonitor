@@ -100,11 +100,6 @@ export default {
   },
   methods: {
     openURL,
-    getUserInfo() {
-      const userinfo = this.$store.state.auth.userinfo
-      return !(userinfo == null) ? userinfo : {display_name: 'Not logged'}
-    }
-
   },
   mounted () {
     window.addEventListener('scroll', () => {
