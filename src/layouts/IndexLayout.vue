@@ -25,18 +25,8 @@
           CODEMED Services
           <div slot="subtitle"></div>
         </q-toolbar-title>
-         
-          
-         
-          <q-chip 
-              flat
-              class="cursor-pointer" 
-              @click.native="$router.push('/usuario')"
-              avatar="/statics/avatar.jpg" 
-              color="primary"           
-            >
-              {{ getUserInfo().display_name }}
-            </q-chip>
+        
+        <user-chip-modal></user-chip-modal>
          
  
       </q-toolbar>
@@ -97,6 +87,7 @@
 
 <script>
 import { openURL } from 'quasar'
+import UserChipModal from 'components/UserChipModal'
 
 export default {
   name: 'indexLayout',
@@ -119,7 +110,8 @@ export default {
     window.addEventListener('scroll', () => {
       this.scrollY = window.scrollY
     });
-  },  
+  },
+  components: { UserChipModal }  
 }
 </script>
 
