@@ -43,6 +43,14 @@
         icon="close"
         label="close"
       />
+      <p></p>
+      <p class="text-bold text-red">Danger!</p>
+      <q-btn
+        color="warning"
+        @click="deleteClient()"
+        icon="delete"
+        label="delete"
+      />
     </q-modal>
 
     <q-btn 
@@ -96,6 +104,21 @@ export default {
         this.$store.dispatch('auth/GET_CLIENTES').then(resp => {})
       }).catch(err => {
         alert('falha ao atualizar os dados do cliente', err.data)
+        // consulto novamente na API os clientes
+        this.$store.dispatch('auth/GET_CLIENTES').then(resp => {})
+      })
+    },
+    deleteClient() {
+      const data = {
+        'id': this.userclient.id
+      }
+      console.log(data)
+      this.$store.dispatch('clients/DELETE_CLIENT', data).then(resp => {
+        alert('cliente deletado com sucesso!', resp.data)
+        // consulto novamente na API os clientes
+        this.$store.dispatch('auth/GET_CLIENTES').then(resp => {})
+      }).catch(err => {
+        alert('falha ao deletar os dados do cliente', err.data)
         // consulto novamente na API os clientes
         this.$store.dispatch('auth/GET_CLIENTES').then(resp => {})
       })
