@@ -29,6 +29,8 @@
             :loading="isAjaxClicked"        
             :color="btnClientColor"
           />
+          
+          <UpdateUserClientModal :userclient="currentClient" />
 
           <q-list class="bg-grey-2 text-center" v-for="s in services">
             <q-list-header> {{s.display_name}}</q-list-header>
@@ -69,11 +71,15 @@
 </template>
 
 <script>
+import UpdateUserClientModal from 'components/UpdateUserClientModal'
+
 export default {
   name: 'Clients',
+  components: {
+    UpdateUserClientModal
+  },
   data () {
     return { 
-      clientes: [],
       currentClient: null,
       services: [],
       isAjaxClicked: false,
@@ -126,10 +132,13 @@ export default {
       }
     }
   },
+  computed: {
+    clientes () {
+      return this.$store.state.auth.clientes
+    }
+  },
   mounted () {
-    this.$store.dispatch('auth/GET_CLIENTES').then(resp => {
-      this.clientes = resp.data
-    })
+    this.$store.dispatch('auth/GET_CLIENTES').then(resp => { })
   }
 }
 </script>
