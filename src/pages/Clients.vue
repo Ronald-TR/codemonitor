@@ -2,7 +2,10 @@
   <q-page padding class="text-center">
     <div class="form-container bg-grey-1">
       <div class="form-bar bg-dark text-white">
-        <a class="text-weight-thin text-weight-light">Clientes</a>
+        <div style="display: inline">
+          <a class="text-weight-thin text-weight-light">Clientes </a>
+          <NewUserClientModal style="display: inline" />
+        </div>  
         <!-- <p class="text-weight-light">
         </p> -->
       </div>
@@ -72,11 +75,12 @@
 
 <script>
 import UpdateUserClientModal from 'components/UpdateUserClientModal'
+import NewUserClientModal from 'components/NewUserClientModal'
 
 export default {
   name: 'Clients',
   components: {
-    UpdateUserClientModal
+    UpdateUserClientModal, NewUserClientModal
   },
   data () {
     return { 
