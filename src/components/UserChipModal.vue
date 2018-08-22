@@ -46,9 +46,6 @@ export default {
     userinfo () {
       return this.$store.state.auth.userinfo
     }
-  },
-  mounted () {
-    console.log('a', this.userinfo)
   }
 }
 </script>
